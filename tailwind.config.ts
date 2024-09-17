@@ -11,6 +11,15 @@ const config: Config = {
     extend: {
       backgroundColor: {
         primary: "#F3F3F3",
+        grayPrimary: "#373B49",
+        graySecondary: "#EEEEEE",
+      },
+      gridTemplateColumns: {
+        "2-auto": "repeat(2,auto)",
+        "1fr-auto-1fr": "1fr auto 1fr",
+      },
+      textColor: {
+        grayPrimary: "#373B49",
       },
       colors: {
         background: "hsl(var(--background))",

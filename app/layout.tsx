@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-
 import "./globals.css";
+
+import { GeistSans } from "geist/font/sans";
 
 export const metadata: Metadata = {
   title: "Awesome Login forms!",
@@ -14,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body style={GeistSans.style}>
         <main>{children}</main>
       </body>
     </html>

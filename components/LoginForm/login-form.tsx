@@ -1,15 +1,25 @@
 "use client";
-import React, { useTransition } from "react";
-// > Components
-
-import { useForm } from "react-hook-form";
-import { LoginFormSchema } from "@/schemas";
+// > Zod
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+// > React
+import React, { useTransition } from "react";
+import { useForm } from "react-hook-form";
+// > Schemas
+import { LoginFormSchema } from "@/schemas";
+// > Components
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { FormError } from "@/components/ui/error-form";
+import { Checkbox } from "@/components/ui/checkbox";
+import { StarsBackground } from "@/components/ui/stars-background";
+import { ShootingStars } from "@/components/ui/shooting-stars";
+import { TitleForm } from "./_components/title-form";
+import { SocialButtonsForm } from "./_components/socialButtons-form";
+import { FooterForm } from "./_components/footer-form";
+
+import { cn } from "@/lib/utils";
+import GridPattern from "@/components/ui/grid-pattern";
 
 const LoginForm: React.FC = () => {
   const [isPending, startTransition] = useTransition();
@@ -17,7 +27,6 @@ const LoginForm: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm<z.infer<typeof LoginFormSchema>>({
     resolver: zodResolver(LoginFormSchema),
     defaultValues: {
@@ -30,38 +39,78 @@ const LoginForm: React.FC = () => {
 
   return (
     <form
-      className="w-[350px] bg-white rounded-md p-6"
+      className=" w-full sm:w-[400px] bg-white rounded-2xl p-6 shadow-md border-[1px] border-gray-300 relative"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div>
+      <TitleForm />
+      <div className="grid gap-4 relative ">
         <div className="relative">
-          <Label htmlFor="email">Email</Label>
+          <Label
+            className={`${
+              errors.email?.message ? "text-red-400" : "text-black"
+            }`}
+            htmlFor="email"
+          >
+            Email
+          </Label>
           <Input
-            placeholder="Email"
-            className={`mt-1 `}
+            placeholder={`Email`}
+            className={`mt-1 bg-white ${
+              errors.email ? "border-red-400 placeholder:text-red-300" : ""
+            }`}
             type="text"
             id="email"
             disabled={isPending}
             {...register("email")}
           />
-          <FormError error={errors.email?.message ?? ""} />
         </div>
         <div className="relative">
-          <Label htmlFor="password">Password</Label>
+          <Label
+            className={`bg-white ${
+              errors.password?.message ? "text-red-400" : "text-black"
+            }`}
+            htmlFor="password"
+          >
+            Password
+          </Label>
           <Input
-            placeholder="Password"
-            className={`mt-1 `}
+            placeholder={`Password`}
+            className={`mt-1 ${
+              errors.password ? "border-red-400 placeholder:text-red-300" : ""
+            }`}
             type="text"
             id="password"
             disabled={isPending}
             {...register("password")}
           />
-          <FormError error={errors.password?.message ?? ""} />
         </div>
       </div>
-      <Button className="w-full" type="submit">
-        {isPending ? "Sending..." : "Log In"}
-      </Button>
+      <div className="grid gap-4 mt-4 relative z-10">
+        <div className="grid grid-cols-2-auto justify-start items-center gap-2">
+          <Checkbox className="" id="terms1" />
+          <label
+            className="text-grayPrimary text-[14px] font-medium"
+            htmlFor="terms1"
+          >
+            Remember me
+          </label>
+        </div>
+        <Button
+          className="w-full bg-grayPrimary rounded-lg font-normal md:hover:bg-grayPrimary/80 active:scale-[.98] transition-all relative"
+          type="submit"
+        >
+          {isPending ? "Wait..." : "Login"}
+          <StarsBackground className="select-none" starDensity={0.001} />
+          <ShootingStars
+            starColor="#fff"
+            trailColor="#fff"
+            minDelay={1000}
+            maxDelay={2000}
+          />
+        </Button>
+      </div>
+      <SocialButtonsForm />
+      <FooterForm />
     </form>
   );
 };
