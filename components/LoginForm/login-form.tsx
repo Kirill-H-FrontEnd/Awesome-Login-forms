@@ -20,6 +20,7 @@ import { FooterForm } from "./_components/footer-form";
 
 import { cn } from "@/lib/utils";
 import GridPattern from "@/components/ui/grid-pattern";
+import Link from "next/link";
 
 const LoginForm: React.FC = () => {
   const [isPending, startTransition] = useTransition();
@@ -46,7 +47,7 @@ const LoginForm: React.FC = () => {
       <div className="grid gap-4 relative ">
         <div className="relative">
           <Label
-            className={`${
+            className={` ${
               errors.email?.message ? "text-red-400" : "text-black"
             }`}
             htmlFor="email"
@@ -65,8 +66,14 @@ const LoginForm: React.FC = () => {
           />
         </div>
         <div className="relative">
+          <Link
+            className="absolute top-[3px] right-0 text-[13px] font-normal text-blue-500 md:hover:text-blue-400"
+            href=""
+          >
+            Forgot password
+          </Link>
           <Label
-            className={`bg-white ${
+            className={`bg-white    ${
               errors.password?.message ? "text-red-400" : "text-black"
             }`}
             htmlFor="password"

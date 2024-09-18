@@ -119,7 +119,10 @@ const RegisterForm: React.FC = () => {
               htmlFor="terms1"
             >
               I accept{" "}
-              <Link className="text-blue-500" href="">
+              <Link
+                className="text-blue-500 font-normal md:hover:text-blue-400"
+                href=""
+              >
                 Terms and Conditions
               </Link>
             </label>
