@@ -1,8 +1,8 @@
-# <h3 align="center"> Awesome SignIn and SingUp forms | NextJs</h3>
+# <h3 align="center">Awesome SignIn and SingUp forms</h3>
 
 <h4 align="center">Welcome to the Awesome SignIn and SingUp form project repository! We would like to present to you the incredible SignIn and SignUp forms for your project!</h3>
 
-[![Banner](./public/login-forms-banner.jpg)]
+![Banner](./public/login-forms-banner.jpg)
 
 ## 🤖 About TaxPal
 
