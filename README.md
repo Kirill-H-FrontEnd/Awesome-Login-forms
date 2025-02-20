@@ -4,7 +4,7 @@
 
 ![Banner](./public/login-forms-banner.jpg)
 
-## 🤖 About TaxPal
+## 🤖 About Awesome Forms
 
 These are fully validated components using Zod for your project! You just need to add them to your project!
 
